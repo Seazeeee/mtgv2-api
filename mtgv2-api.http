@@ -1,0 +1,13 @@
+@mtgv2_api_HostAddress = http://localhost:5043
+
+# Test database connection
+GET {{mtgv2_api_HostAddress}}/odata/cards/test-connection
+Accept: application/json
+
+###
+
+# Test OData endpoint (will fail if no data, but tests the setup)
+GET {{mtgv2_api_HostAddress}}/odata/cards
+Accept: application/json
+
+###
