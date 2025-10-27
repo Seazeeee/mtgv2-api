@@ -27,34 +27,11 @@ namespace mtgv2_api.Controllers
             // OData automatically handles $filter, $select, etc.
             return _context.Cards;
         }
-        
-        [HttpGet("Cards/test-connection")]
-        public async Task<IActionResult> TestConnection()
+        [EnableQuery]
+        [HttpGet("card_combos")]
+        public IQueryable<CardCombo> GetCardCombos()
         {
-            try
-            {
-                // Test if we can connect to the database
-                var canConnect = await _context.Database.CanConnectAsync();
-                
-                if (canConnect)
-                {
-                    // Try to get the count of cards (this will fail if table doesn't exist, but connection works)
-                    var cardCount = await _context.Cards.CountAsync();
-                    return Ok(new { 
-                        message = "Database connection successful!", 
-                        cardCount = cardCount,
-                        timestamp = DateTime.UtcNow 
-                    });
-                }
-                else
-                {
-                    return BadRequest("Cannot connect to database");
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Database connection failed: {ex.Message}");
-            }
+            return _context.CardCombos;
         }
     }
 }

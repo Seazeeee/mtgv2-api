@@ -10,6 +10,7 @@ namespace mtgv2_api.Data
         }
         
         public DbSet<Card> Cards { get; set; }
+        public DbSet<CardCombo> CardCombos { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +33,21 @@ namespace mtgv2_api.Data
                 entity.HasIndex(e => e.card_name);
                 entity.HasIndex(e => e.set);
                 entity.HasIndex(e => e.rarity);
+            });
+            
+            // Configure CardCombo entity
+            modelBuilder.Entity<CardCombo>(entity =>
+            {
+                // Set variant_id as primary key (it's an integer in the database)
+                entity.HasKey(e => e.variant_id);
+                
+                // Specify the table/view name in your database
+                entity.ToTable("mart_card_combo_lookup");
+                
+                // Configure indexes for better performance
+                entity.HasIndex(e => e.card_id);
+                entity.HasIndex(e => e.card_name);
+                entity.HasIndex(e => e.combo_type);
             });
             
             base.OnModelCreating(modelBuilder);
