@@ -5,8 +5,8 @@ namespace mtgv2_api.Models
     public class Card
     {
         // Primary identifiers
-        public string oracle_id { get; set; }
-        public string scryfall_id { get; set; }
+        public required string oracle_id { get; set; }
+        public required string scryfall_id { get; set; }
         
         // Basic card information
         [Required]

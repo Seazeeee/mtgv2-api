@@ -55,5 +55,9 @@ static IEdmModel GetEdmModel()
     var cardEntity = builder.EntitySet<Card>("Cards").EntityType;
     cardEntity.HasKey(c => c.oracle_id);
     
+    // Configure the CardCombo entity with explicit key (variant_id is an integer)
+    var cardComboEntity = builder.EntitySet<CardCombo>("card_combos").EntityType;
+    cardComboEntity.HasKey(c => c.variant_id);
+    
     return builder.GetEdmModel();
 }

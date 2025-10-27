@@ -24,7 +24,6 @@ The API consumes data from the `mart_card_catalog` view, which is populated by t
 
 - Scryfall API
 - Commander Spellbook API
-- Multiple pricing sources
 
 ## Technology Stack
 
@@ -120,9 +119,6 @@ mtgv2-api/
 - [ ] JWT Authentication with Keycloak
 - [ ] Rate limiting and API key management
 - [ ] Caching layer for improved performance
-- [ ] WebSocket support for real-time price updates
-- [ ] GraphQL endpoint alongside OData
-- [ ] Comprehensive API documentation with Swagger
 
 ## License
 
